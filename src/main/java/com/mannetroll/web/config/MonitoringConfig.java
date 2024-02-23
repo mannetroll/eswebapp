@@ -17,10 +17,14 @@ public class MonitoringConfig {
 	private MetricRegistry registry;
 
 	@Bean
-	public MetricRegistry metricRegistry() {
+	public MetricRegistry metricRegistry() {		
 		registry = new MetricRegistry();
-		AppenderMetricsManager.setMetricRegistry(registry);
-		logger.info("MetricRegistry: " + registry);
+		try {
+			AppenderMetricsManager.setMetricRegistry(registry);
+			logger.info("MetricRegistry: " + registry);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return registry;
 	}
 

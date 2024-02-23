@@ -18,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.client.RestTemplate;
 
 import com.mannetroll.metrics.helper.AccessMetricServletFilter;
 import com.mannetroll.metrics.helper.Constants;
@@ -35,6 +36,7 @@ import io.searchbox.client.http.JestHttpClient;
 @SpringBootApplication
 public class WebbApplication {
 	private final static Logger LOGGER = LoggerFactory.getLogger(WebbApplication.class);
+	private RestTemplate restTemplate = new RestTemplate();
 
 	@Autowired
 	private Settings settings;
@@ -100,6 +102,7 @@ public class WebbApplication {
 	public void ping() {
 		try {
 			LOGGER.info("ping");
+			restTemplate.getForEntity("http://localhost:8080/info", String.class);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(), e);
 		}
