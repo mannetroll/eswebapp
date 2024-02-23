@@ -3,12 +3,12 @@ Configuration:
     Console:
       name: ConsoleAppender
       target: SYSTEM_OUT
-      #MetricJsonLayout:
-      #  application: SNAPSHOT
-      #  locationInfo: false
-      #  osInfo: true
-      PatternLayout:
-        pattern: "%blue{%-12d{HH:mm:ss.SSS} %-5p} %-40m %highlight{ | %l} [%t] %n"
+      MetricJsonLayout:
+        application: SNAPSHOT
+        locationInfo: false
+        osInfo: true
+      #PatternLayout:
+      #  pattern: "%blue{%-12d{HH:mm:ss.SSS} %-5p} %-40m %highlight{ | %l} [%t] %n"
   Loggers:
     Root:
       level: info
