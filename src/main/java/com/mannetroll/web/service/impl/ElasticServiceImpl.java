@@ -64,7 +64,7 @@ import io.searchbox.core.search.aggregation.TermsAggregation;
 import io.searchbox.core.search.aggregation.TermsAggregation.Entry;
 
 /**
- * @author drtobbe
+ * @author mannetroll
  */
 @Service
 public class ElasticServiceImpl implements ElasticService {

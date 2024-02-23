@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
- * @author drtobbe
+ * @author mannetroll
  */
 public class LastModifiedHeaderFilter extends OncePerRequestFilter {
     private static final String GMT = "GMT";

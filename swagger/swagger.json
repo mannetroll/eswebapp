@@ -11,6 +11,8 @@
   }, {
     "name" : "Kpi"
   }, {
+    "name" : "Ping"
+  }, {
     "name" : "PopularTimes"
   }, {
     "name" : "Volume"
@@ -320,6 +322,26 @@
             "description" : "OK",
             "schema" : {
               "$ref" : "#/definitions/KpiResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/ping" : {
+      "get" : {
+        "tags" : [ "Ping" ],
+        "summary" : "ping",
+        "description" : "ping",
+        "operationId" : "ping",
+        "produces" : [ "*/*" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "string"
             }
           },
           "400" : {

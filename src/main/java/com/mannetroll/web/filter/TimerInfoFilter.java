@@ -22,7 +22,7 @@ import com.mannetroll.metrics.statistics.AbstractTimerInfoStats;
 import com.mannetroll.metrics.statistics.TimerInfoStats;
 
 /**
- * @author drtobbe
+ * @author mannetroll
  */
 public class TimerInfoFilter implements Filter {
     private static final Logger logger = LogManager.getLogger(TimerInfoFilter.class);

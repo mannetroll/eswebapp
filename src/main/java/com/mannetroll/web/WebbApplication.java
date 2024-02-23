@@ -98,11 +98,11 @@ public class WebbApplication {
 		return (JestHttpClient) factory.getObject();
 	}
 
-	@Scheduled(initialDelay = 3 * 1000, fixedRate = 1000)
+	@Scheduled(initialDelay = 3 * 1000, fixedRate = 2000)
 	public void ping() {
 		try {
 			LOGGER.info("ping");
-			restTemplate.getForEntity("http://localhost:8080/info", String.class);
+			restTemplate.getForEntity("http://localhost:8080/ping", String.class);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(), e);
 		}
