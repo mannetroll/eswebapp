@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  connection-timeout: 1s
+  tomcat.threads.max: 20
+
+management:
+  server.port: 9090
+  endpoint:
+    prometheus.enabled: true
+    health:
+      enabled: true
+      show-details: never
+  endpoints:
+    web:
+      exposure.include: "*"
+  metrics:
+    enable.cache: true  
+    distribution:
+      percentiles-histogram:
+        http.server.requests: false
+      percentiles:
+        http.server.requests: 0.50,0.75,0.95,0.99
+
+kpis:
+  eshost: https://proxy.elastic.se
+  cluster: 00000000000000000000000000000000
+  shield: elastic:elastic
+  timeout: 5000
+  percentile: 95
+  timetolive: 60

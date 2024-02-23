@@ -1,0 +1,589 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "v1",
+    "title" : "API"
+  },
+  "host" : "www.mannetroll.com",
+  "basePath" : "/eswebbapp",
+  "tags" : [ {
+    "name" : "ArrivalCompleted"
+  }, {
+    "name" : "Kpi"
+  }, {
+    "name" : "PopularTimes"
+  }, {
+    "name" : "Volume"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/arrivalcompleted/spid/{spid}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompleted",
+        "description" : "notes",
+        "operationId" : "arrivalCompleted",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "percentile",
+          "in" : "query",
+          "description" : "Percentile",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompleted/spid/{spid}/dayofweek/{dayofweek}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompleteddayofweek",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedDayOfWeek",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "dayofweek",
+          "in" : "path",
+          "description" : "DayOfWeek",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "percentile",
+          "in" : "query",
+          "description" : "Percentile",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompleted/spid/{spid}/percentile/{percentile}/date/{date}/weeks/{weeks}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompletedparam",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedParam",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "percentile",
+          "in" : "path",
+          "description" : "percentile",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "date",
+          "in" : "path",
+          "description" : "date",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "weeks",
+          "in" : "path",
+          "description" : "weeks",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompleted2/spid/{spid}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompleted2",
+        "description" : "notes",
+        "operationId" : "arrivalCompleted2",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompleted2/spid/{spid}/dayofweek/{dayofweek}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompleteddayofweek2",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedDayOfWeek2",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "dayofweek",
+          "in" : "path",
+          "description" : "DayOfWeek",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompletedcache" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompletedcache",
+        "description" : "notes",
+        "operationId" : "arrivalcompletedcache",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompletedexport" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompletedexport",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedExport",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "size",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompletedlist/{spid}" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompletedlist",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedIds",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "collectionFormat" : "csv"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/arrivalcompletedstatus" : {
+      "get" : {
+        "tags" : [ "ArrivalCompleted" ],
+        "summary" : "arrivalcompletedstatus",
+        "description" : "notes",
+        "operationId" : "arrivalCompletedStatus",
+        "produces" : [ "application/json;charset=UTF-8" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/count/{from}/{to}" : {
+      "get" : {
+        "tags" : [ "Volume" ],
+        "summary" : "count",
+        "description" : "count",
+        "operationId" : "count",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "to",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/kpi/itemid/{itemid}" : {
+      "get" : {
+        "tags" : [ "Kpi" ],
+        "summary" : "kpi",
+        "description" : "Get KPI document",
+        "operationId" : "kpi",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/KpiResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/populartimes/spid/{spid}" : {
+      "get" : {
+        "tags" : [ "PopularTimes" ],
+        "summary" : "populartimes",
+        "description" : "populartimes",
+        "operationId" : "populartimes",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PopularTimesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/populartimes/spid/{spid}/cc/{cc}" : {
+      "get" : {
+        "tags" : [ "PopularTimes" ],
+        "summary" : "populartimes",
+        "description" : "populartimes",
+        "operationId" : "populartimesCountry",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "spid",
+          "in" : "path",
+          "description" : "ServicePointID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "cc",
+          "in" : "path",
+          "description" : "CountryCode",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/PopularTimesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/populartimescache" : {
+      "get" : {
+        "tags" : [ "PopularTimes" ],
+        "summary" : "populartimescache",
+        "description" : "notes",
+        "operationId" : "arrivalcompletedcache",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ArrivalCompletedResponse"
+            }
+          }
+        }
+      }
+    },
+    "/volume/{from}/{to}/service/{service}/consignor/{consignor}" : {
+      "get" : {
+        "tags" : [ "Volume" ],
+        "summary" : "volume",
+        "description" : "volume",
+        "operationId" : "volume",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "to",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "service",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "consignor",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ApiError" : {
+      "type" : "object",
+      "required" : [ "faults" ],
+      "properties" : {
+        "faults" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Fault"
+          }
+        }
+      },
+      "description" : "Model for API errors"
+    },
+    "ArrivalCompletedResponse" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        },
+        "apiError" : {
+          "$ref" : "#/definitions/ApiError"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "servicePointId" : {
+          "type" : "string"
+        },
+        "arrivalCompleted" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          }
+        },
+        "percentile" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "weeks" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Fault" : {
+      "type" : "object",
+      "required" : [ "explanationText", "faultCode" ],
+      "properties" : {
+        "faultCode" : {
+          "type" : "string"
+        },
+        "explanationText" : {
+          "type" : "string"
+        },
+        "paramValues" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ParamValues"
+          }
+        }
+      },
+      "description" : "Model for API Fault"
+    },
+    "KpiResponse" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        },
+        "apiError" : {
+          "$ref" : "#/definitions/ApiError"
+        },
+        "data" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        }
+      },
+      "description" : "Model containing a KPI",
+      "xml" : {
+        "name" : "KpiResponse"
+      }
+    },
+    "ParamValues" : {
+      "type" : "object",
+      "required" : [ "param", "value" ],
+      "properties" : {
+        "param" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Key/Value information about errors"
+    },
+    "PopularTimesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        },
+        "apiError" : {
+          "$ref" : "#/definitions/ApiError"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string"
+        },
+        "dateFrom" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "dateTo" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "servicePointId" : {
+          "type" : "string"
+        },
+        "popularTimes" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          }
+        },
+        "weekAverage" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "countryCode" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

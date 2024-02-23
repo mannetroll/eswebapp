@@ -1,0 +1,10 @@
+FROM adoptopenjdk/openjdk11:jre-11.0.11_9
+RUN mkdir /opt/app
+COPY target/kpis*.jar /opt/app/app.jar
+WORKDIR /opt/app/
+ENTRYPOINT exec java \
+-Xms1280m -Xmx2048m \
+-XX:MaxMetaspaceSize=100m \
+-XX:CompressedClassSpaceSize=15m \
+-XX:ReservedCodeCacheSize=60m \
+-jar /opt/app/app.jar
