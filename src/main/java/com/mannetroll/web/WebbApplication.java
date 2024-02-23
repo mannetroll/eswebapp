@@ -2,8 +2,6 @@ package com.mannetroll.web;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 import javax.servlet.Filter;
 
@@ -19,6 +17,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import com.mannetroll.metrics.helper.AccessMetricServletFilter;
 import com.mannetroll.metrics.helper.Constants;
@@ -75,11 +74,6 @@ public class WebbApplication {
 		return new LastModifiedHeaderFilter();
 	}
 
-	@Bean(destroyMethod = "shutdown")
-	public ScheduledExecutorService taskScheduler() {
-		return Executors.newScheduledThreadPool(1);
-	}
-
 	@Bean
 	JestClient jestClient() {
 		LOGGER.info("eshost: " + settings.getEshost());
@@ -100,6 +94,15 @@ public class WebbApplication {
 				.connTimeout(1000).readTimeout(settings.getTimeout());
 		factory.setHttpClientConfig(builder.build());
 		return (JestHttpClient) factory.getObject();
+	}
+
+	@Scheduled(initialDelay = 3 * 1000, fixedRate = 1000)
+	public void ping() {
+		try {
+			LOGGER.info("ping");
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
+		}
 	}
 
 	public static void main(String[] args) {

@@ -13,7 +13,6 @@
   <name>eswebapp</name>
   <properties>
     <start-class>com.mannetroll.web.WebbApplication</start-class>
-    <java.version>11</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson.version>2.9.7</jackson.version>
     <log4j2.version>2.17.0</log4j2.version>
@@ -115,16 +114,12 @@
   </dependencies>
   <build>
     <plugins>
-      <plugin>
+	  <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
         <configuration>
-          <release>${java.version}</release>
-          <encoding>${project.build.sourceEncoding}</encoding>
-          <fork>true</fork>
-          <maxmem>1024m</maxmem>
-          <debug>true</debug>
-          <debuglevel>lines,vars,source</debuglevel>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
