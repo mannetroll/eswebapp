@@ -1,16 +1,32 @@
 Configuration:
+  Properties:
+    property:
+      - name: applicationName
+        value: eswebapp
+      - name: installDirectory
+        value: /usr/local/app
+      - name: applicationJar
+        value: eswebapp-1.0.0-SNAPSHOT.jar
   Appenders:
-    Console:
-      name: ConsoleAppender
-      target: SYSTEM_OUT
-      MetricJsonLayout:
-        application: SNAPSHOT
-        locationInfo: false
-        osInfo: true
-      #PatternLayout:
-      #  pattern: "%blue{%-12d{HH:mm:ss.SSS} %-5p} %-40m %highlight{ | %l} [%t] %n"
+    RollingFile:
+      - name: MetricJsonDailyRollingFileAppenderRef
+        fileName: ${installDirectory}/log/${applicationName}/metrics.log
+        filePattern: ${installDirectory}/log/${applicationName}/metrics.%d{yyyy-MM-dd}.log
+        MetricJsonLayout:
+          application: ${applicationJar}
+          locationInfo: true
+          osInfo: true
+        Policies:
+          CronTriggeringPolicy:
+            evaluateOnStartup: true
+            schedule: 0 0 0 * * ?
+        DefaultRollOverStrategy:
+          Delete:
+            basePath: ${installDirectory}/log/${applicationName}/
+            IfLastModified:
+              age: 2d
   Loggers:
     Root:
       level: info
       AppenderRef:
-        - ref: ConsoleAppender
+        - ref: MetricJsonDailyRollingFileAppenderRef
