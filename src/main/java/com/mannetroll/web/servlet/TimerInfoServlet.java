@@ -31,6 +31,7 @@ import com.mannetroll.metrics.statistics.TimerInfoStats;
  */
 @Configuration
 public class TimerInfoServlet extends HttpServlet {
+	private static final String INFO = "/info";
 	private static final String E = "";
 	private static final long serialVersionUID = 1L;
 	private static TimerInfoStats tistat = TimerInfoStats.getInstance("kpis");
@@ -39,13 +40,13 @@ public class TimerInfoServlet extends HttpServlet {
 
 	@Bean
 	public ServletRegistrationBean<HttpServlet> timerInfoServletBean() {
-		return new ServletRegistrationBean<HttpServlet>(new TimerInfoServlet(), "/info");
+		return new ServletRegistrationBean<HttpServlet>(new TimerInfoServlet(), INFO);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ThreadContext.put(Constants.METRICS_NAME, "info");
+		ThreadContext.put(Constants.METRICS_NAME, INFO);
 		response.setContentType("text/html;charset=UTF-8");
 		response.setHeader("Edge-control", "no-store");
 		if ("clear".equalsIgnoreCase(request.getParameter("clear"))) {

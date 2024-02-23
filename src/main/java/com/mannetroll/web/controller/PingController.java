@@ -24,12 +24,14 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @Api(value = "Ping")
 public class PingController {
+	private static final String PING = "/ping";
+
 	@ApiOperation(value = "ping", notes = "ping")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
 			@ApiResponse(code = 400, message = "Bad request") })
-	@RequestMapping(value = "/ping", method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
+	@RequestMapping(value = PING, method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
 	public ResponseEntity<String> ping() {
-		ThreadContext.put(Constants.METRICS_NAME, "ping");
+		ThreadContext.put(Constants.METRICS_NAME, PING);
 		String response = (new Date()).toString();
 		return new ResponseEntity<String>(response, HttpStatus.OK);
 	}
