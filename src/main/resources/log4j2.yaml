@@ -24,7 +24,7 @@ Configuration:
           Delete:
             basePath: ${installDirectory}/log/${applicationName}/
             IfLastModified:
-              age: 2d
+              age: 1d
   Loggers:
     Root:
       level: info

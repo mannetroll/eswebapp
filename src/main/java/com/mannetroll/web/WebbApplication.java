@@ -1,7 +1,9 @@
 package com.mannetroll.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.Filter;
 
@@ -9,9 +11,9 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicHeader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.mannetroll.metrics.helper.AccessMetricServletFilter;
 import com.mannetroll.metrics.helper.Constants;
+import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.config.Settings;
 import com.mannetroll.web.filter.HttpEtagFilter;
 import com.mannetroll.web.filter.LastModifiedHeaderFilter;
@@ -35,14 +38,14 @@ import io.searchbox.client.http.JestHttpClient;
 
 @SpringBootApplication
 public class WebbApplication {
-	private final static Logger LOGGER = LoggerFactory.getLogger(WebbApplication.class);
+	private static final Logger LOG = LogManager.getLogger(WebbApplication.class);
 	private RestTemplate restTemplate = new RestTemplate();
 
 	@Autowired
 	private Settings settings;
 
 	static {
-		MDC.put(Constants.NANOTIME, String.valueOf(System.nanoTime()));
+		ThreadContext.put(Constants.NANOTIME, String.valueOf(System.nanoTime()));
 	}
 
 	@Bean
@@ -51,7 +54,7 @@ public class WebbApplication {
 		registration.setFilter(new AccessMetricServletFilter());
 		registration.addUrlPatterns("/*");
 		registration.setName("accessMetricServletFilter");
-		LOGGER.info("### FilterRegistrationBean: AccessMetricServletFilter");
+		LOG.info("### FilterRegistrationBean: AccessMetricServletFilter");
 		return registration;
 	}
 
@@ -62,7 +65,7 @@ public class WebbApplication {
 		registration.setFilter(filter);
 		registration.addUrlPatterns("/*");
 		registration.setName("timerInfoFilter");
-		LOGGER.info("### FilterRegistrationBean: timerInfoFilter");
+		LOG.info("### FilterRegistrationBean: timerInfoFilter");
 		return registration;
 	}
 
@@ -78,8 +81,8 @@ public class WebbApplication {
 
 	@Bean
 	JestClient jestClient() {
-		LOGGER.info("eshost: " + settings.getEshost());
-		LOGGER.info("cluster: " + settings.getCluster());
+		LOG.info("eshost: " + settings.getEshost());
+		LOG.info("cluster: " + settings.getCluster());
 		List<Header> headers = new ArrayList<Header>();
 		headers.add(new BasicHeader("X-Found-Cluster", settings.getCluster()));
 		String basic = new String(Base64.encodeBase64(settings.getShield().getBytes()));
@@ -101,15 +104,25 @@ public class WebbApplication {
 	@Scheduled(initialDelay = 3 * 1000, fixedRate = 2000)
 	public void ping() {
 		try {
-			LOGGER.info("ping");
+			Map<String, Object> logmap = new HashMap<>();
+			long sleep = sleep();
+			logmap.put(LogKeys.DESCRIPTION, "Will sleep: " + sleep);
+			Thread.sleep(sleep);
+			LOG.info(logmap);
+			//
+			Thread.sleep(sleep());
 			restTemplate.getForEntity("http://localhost:8080/ping", String.class);
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage(), e);
+			LOG.error(e.getMessage(), e);
 		}
+	}
+
+	private Long sleep() {
+		return (long) (Math.random() * 1000);
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebbApplication.class, args);
-		LOGGER.info("Done!");
+		LOG.info("Done!");
 	}
 }
