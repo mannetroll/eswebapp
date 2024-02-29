@@ -11,9 +11,9 @@
   }, {
     "name" : "Kpi"
   }, {
-    "name" : "Ping"
-  }, {
     "name" : "PopularTimes"
+  }, {
+    "name" : "Process"
   }, {
     "name" : "Volume"
   } ],
@@ -330,26 +330,6 @@
         }
       }
     },
-    "/ping" : {
-      "get" : {
-        "tags" : [ "Ping" ],
-        "summary" : "ping",
-        "description" : "ping",
-        "operationId" : "ping",
-        "produces" : [ "*/*" ],
-        "responses" : {
-          "200" : {
-            "description" : "OK",
-            "schema" : {
-              "type" : "string"
-            }
-          },
-          "400" : {
-            "description" : "Bad request"
-          }
-        }
-      }
-    },
     "/populartimes/spid/{spid}" : {
       "get" : {
         "tags" : [ "PopularTimes" ],
@@ -417,6 +397,26 @@
             "schema" : {
               "$ref" : "#/definitions/ArrivalCompletedResponse"
             }
+          }
+        }
+      }
+    },
+    "/process/{action}" : {
+      "get" : {
+        "tags" : [ "Process" ],
+        "summary" : "process",
+        "description" : "process",
+        "operationId" : "ping",
+        "produces" : [ "text/plain" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
           }
         }
       }
