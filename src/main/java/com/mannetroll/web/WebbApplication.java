@@ -108,16 +108,17 @@ public class WebbApplication {
 	@Scheduled(initialDelay = 3 * 1000, fixedRate = 2000)
 	public void ping() {
 		try {
-			String pickNRandom = pickNRandom(actionList, 1).get(0);
+			String action = action(actionList, 1).get(0);
 			Map<String, Object> logmap = new HashMap<>();
 			long sleep = PingController.nextGaussian();
 			logmap.put(LogKeys.DESCRIPTION, "Will sleep: " + sleep);
-			logmap.put("pickNRandom", pickNRandom);
+			logmap.put("action", action);
 			logmap.put("sleep", sleep);
 			LOG.info(logmap);
 			Thread.sleep(sleep);
 			//
-			restTemplate.getForEntity("http://localhost:8080/process/" + pickNRandom, String.class);
+			restTemplate.getForEntity("http://localhost:8080/process/" + action, String.class);
+			restTemplate.getForEntity("http://localhost:8080/" + action, String.class);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 		}
@@ -125,7 +126,7 @@ public class WebbApplication {
 
 	List<String> actionList = new LinkedList<String>(Arrays.asList("create", "delete", "move", "update"));
 
-	public static List<String> pickNRandom(List<String> lst, int n) {
+	public static List<String> action(List<String> lst, int n) {
 		List<String> copy = new ArrayList<String>(lst);
 		Collections.shuffle(copy);
 		return n > copy.size() ? copy.subList(0, copy.size()) : copy.subList(0, n);

@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /*
- * curl -is http://localhost:8080/process
+ * curl -is http://localhost:8080/process/create
  */
 
 @RestController
@@ -33,8 +33,21 @@ public class PingController {
 			@ApiResponse(code = 400, message = "Bad request") })
 	@RequestMapping(value = "/process/{action}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 
-	public ResponseEntity<String> ping() throws InterruptedException {
+	public ResponseEntity<String> process() throws InterruptedException {
 		ThreadContext.put(Constants.METRICS_NAME, PROCESS);
+		String response = (new Date()).toString();
+		long sleep = PingController.nextGaussian();
+		Thread.sleep(sleep);
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "action", notes = "action")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
+			@ApiResponse(code = 400, message = "Bad request") })
+	@RequestMapping(value = "/{action}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+
+	public ResponseEntity<String> action() throws InterruptedException {
+		ThreadContext.put(Constants.METRICS_NAME, "{action}");
 		String response = (new Date()).toString();
 		long sleep = PingController.nextGaussian();
 		Thread.sleep(sleep);
