@@ -113,6 +113,7 @@ public class WebbApplication {
 			long sleep = PingController.nextGaussian();
 			logmap.put(LogKeys.DESCRIPTION, "Will sleep: " + sleep);
 			logmap.put("pickNRandom", pickNRandom);
+			logmap.put("sleep", sleep);
 			LOG.info(logmap);
 			Thread.sleep(sleep);
 			//
