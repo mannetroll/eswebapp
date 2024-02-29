@@ -1,6 +1,7 @@
 package com.mannetroll.web.controller;
 
 import java.util.Date;
+import java.util.Random;
 
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.http.HttpStatus;
@@ -18,22 +19,31 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /*
- * curl -is http://localhost:8080/ping
+ * curl -is http://localhost:8080/process
  */
 
 @RestController
-@Api(value = "Ping")
+@Api(value = "Process")
 public class PingController {
-	private static final String PING = "/ping";
+	private static final String PROCESS = "/process";
+	private static Random random = new Random();
 
-	@ApiOperation(value = "ping", notes = "ping")
+	@ApiOperation(value = "process", notes = "process")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = String.class),
 			@ApiResponse(code = 400, message = "Bad request") })
-	@RequestMapping(value = PING, method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
-	public ResponseEntity<String> ping() {
-		ThreadContext.put(Constants.METRICS_NAME, PING);
+	@RequestMapping(value = "/process/{action}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+
+	public ResponseEntity<String> ping() throws InterruptedException {
+		ThreadContext.put(Constants.METRICS_NAME, PROCESS);
 		String response = (new Date()).toString();
+		long sleep = PingController.nextGaussian();
+		Thread.sleep(sleep);
 		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
+	public static Long nextGaussian() {
+		double val = random.nextGaussian() * 500 + 1000;
+		return Math.abs((long) Math.round(val));
 	}
 
 }

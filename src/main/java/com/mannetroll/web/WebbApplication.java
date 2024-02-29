@@ -1,7 +1,10 @@
 package com.mannetroll.web;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +29,7 @@ import com.mannetroll.metrics.helper.AccessMetricServletFilter;
 import com.mannetroll.metrics.helper.Constants;
 import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.config.Settings;
+import com.mannetroll.web.controller.PingController;
 import com.mannetroll.web.filter.HttpEtagFilter;
 import com.mannetroll.web.filter.LastModifiedHeaderFilter;
 import com.mannetroll.web.filter.TimerInfoFilter;
@@ -104,21 +108,26 @@ public class WebbApplication {
 	@Scheduled(initialDelay = 3 * 1000, fixedRate = 2000)
 	public void ping() {
 		try {
+			String pickNRandom = pickNRandom(actionList, 1).get(0);
 			Map<String, Object> logmap = new HashMap<>();
-			long sleep = sleep();
+			long sleep = PingController.nextGaussian();
 			logmap.put(LogKeys.DESCRIPTION, "Will sleep: " + sleep);
-			Thread.sleep(sleep);
+			logmap.put("pickNRandom", pickNRandom);
 			LOG.info(logmap);
+			Thread.sleep(sleep);
 			//
-			Thread.sleep(sleep());
-			restTemplate.getForEntity("http://localhost:8080/ping", String.class);
+			restTemplate.getForEntity("http://localhost:8080/process/" + pickNRandom, String.class);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 		}
 	}
 
-	private Long sleep() {
-		return (long) (Math.random() * 1000);
+	List<String> actionList = new LinkedList<String>(Arrays.asList("create", "delete", "move", "update"));
+
+	public static List<String> pickNRandom(List<String> lst, int n) {
+		List<String> copy = new ArrayList<String>(lst);
+		Collections.shuffle(copy);
+		return n > copy.size() ? copy.subList(0, copy.size()) : copy.subList(0, n);
 	}
 
 	public static void main(String[] args) {
