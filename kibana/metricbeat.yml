@@ -1,0 +1,12 @@
+metricbeat.modules:
+- module: prometheus
+  period: 2s
+  hosts: ["localhost:9090"]
+  metrics_path: /actuator/prometheus
+
+setup.template.settings:
+  index.number_of_shards: 1
+  index.codec: best_compression
+
+output.logstash:
+  hosts: ["localhost:5044"]
