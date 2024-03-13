@@ -13,7 +13,7 @@ Configuration:
         fileName: ${installDirectory}/log/${applicationName}/metrics.log
         filePattern: ${installDirectory}/log/${applicationName}/metrics.%d{yyyy-MM-dd}.log
         MetricJsonLayout:
-          application: ${applicationJar}
+          application: ${applicationName}
           locationInfo: true
           osInfo: true
         Policies:
