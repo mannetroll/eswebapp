@@ -14,6 +14,7 @@ Configuration:
         filePattern: ${installDirectory}/log/${applicationName}/metrics.%d{yyyy-MM-dd}.log
         MetricJsonLayout:
           application: ${applicationName}
+          namespace: alces
           locationInfo: true
           osInfo: true
         Policies:

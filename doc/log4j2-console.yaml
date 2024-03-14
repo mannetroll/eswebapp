@@ -5,6 +5,7 @@ Configuration:
       target: SYSTEM_OUT
       MetricJsonLayout:
         application: SNAPSHOT
+        namespace: mannetroll
         locationInfo: false
         osInfo: true
       #PatternLayout:
