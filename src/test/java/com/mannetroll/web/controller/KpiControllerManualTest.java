@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
-import com.mannetroll.web.controller.KpiController;
 import com.mannetroll.web.model.KpiResponse;
 import com.mannetroll.web.util.JsonUtil;
 

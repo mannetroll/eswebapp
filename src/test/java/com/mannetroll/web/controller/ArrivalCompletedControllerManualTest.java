@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import com.mannetroll.web.controller.ArrivalCompletedController;
 import com.mannetroll.web.model.ArrivalCompletedResponse;
 import com.mannetroll.web.model.ArrivalCompletedStatusResponse;
 import com.mannetroll.web.service.ElasticService;

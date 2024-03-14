@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
-import com.mannetroll.web.controller.PopularTimesController;
 import com.mannetroll.web.model.PopularTimesResponse;
 import com.mannetroll.web.service.ElasticService;
 import com.mannetroll.web.service.impl.ElasticServiceImpl;

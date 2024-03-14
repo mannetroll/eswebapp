@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import com.mannetroll.web.controller.ArrivalCompletedController;
 import com.mannetroll.web.service.ElasticService;
 import com.mannetroll.web.service.impl.ElasticServiceImpl;
 

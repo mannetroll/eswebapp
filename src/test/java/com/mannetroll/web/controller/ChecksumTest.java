@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
-import com.mannetroll.web.controller.Checksum;
-
 public class ChecksumTest {
     private static final Logger LOGGER = LogManager.getLogger(ChecksumTest.class);
     private static Checksum checksum = Checksum.instance();

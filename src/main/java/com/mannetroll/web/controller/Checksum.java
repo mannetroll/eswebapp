@@ -74,22 +74,22 @@ public class Checksum
 	// Skapa tabell med giltiga typer av id
 	m_htType = new Hashtable<String, Integer>();
 
-	m_htType.put(new String("customer_id"), new Integer(CUSTOMER_ID));
-	m_htType.put(new String("kundnummer"), new Integer(CUSTOMER_ID));
-	m_htType.put(new String("kundnr"), new Integer(CUSTOMER_ID));
+	m_htType.put(new String("customer_id"), Integer.valueOf(CUSTOMER_ID));
+	m_htType.put(new String("kundnummer"), Integer.valueOf(CUSTOMER_ID));
+	m_htType.put(new String("kundnr"), Integer.valueOf(CUSTOMER_ID));
 
-	m_htType.put(new String("social_security_number"), new Integer(SOCIAL_SECURITY_NUMBER));
-	m_htType.put(new String("personnummer"), new Integer(SOCIAL_SECURITY_NUMBER));
-	m_htType.put(new String("personnr"), new Integer(SOCIAL_SECURITY_NUMBER));
-	m_htType.put(new String("persnr"), new Integer(SOCIAL_SECURITY_NUMBER));
+	m_htType.put(new String("social_security_number"), Integer.valueOf(SOCIAL_SECURITY_NUMBER));
+	m_htType.put(new String("personnummer"), Integer.valueOf(SOCIAL_SECURITY_NUMBER));
+	m_htType.put(new String("personnr"), Integer.valueOf(SOCIAL_SECURITY_NUMBER));
+	m_htType.put(new String("persnr"), Integer.valueOf(SOCIAL_SECURITY_NUMBER));
 
-	m_htType.put(new String("parcel_id"), new Integer(PARCEL_ID));
-	m_htType.put(new String("kolliid"), new Integer(PARCEL_ID));
+	m_htType.put(new String("parcel_id"), Integer.valueOf(PARCEL_ID));
+	m_htType.put(new String("kolliid"), Integer.valueOf(PARCEL_ID));
 
-	m_htType.put(new String("ocrReferensnummer"), new Integer(OCR_REFERENCE_NUMBER));
-	m_htType.put(new String("ocr_reference_number"), new Integer(OCR_REFERENCE_NUMBER));
+	m_htType.put(new String("ocrReferensnummer"), Integer.valueOf(OCR_REFERENCE_NUMBER));
+	m_htType.put(new String("ocr_reference_number"), Integer.valueOf(OCR_REFERENCE_NUMBER));
 
-	m_htType.put(new String("extprod_kolliId"), new Integer(EXTPROD_PARCEL_ID));
+	m_htType.put(new String("extprod_kolliId"), Integer.valueOf(EXTPROD_PARCEL_ID));
 
 	// Ange att klassen instantierades (och initierades) utan fel
 	isInstantiated = true;
@@ -537,7 +537,7 @@ public class Checksum
 	boolean bValid = false;        // Flagga för giltigt id
 
 	// Kontrollera att rätt typ har angivits för id:t
-	if (!m_htType.containsValue(new Integer(p_iType)))
+	if (!m_htType.containsValue(Integer.valueOf(p_iType)))
 	{
 	  throw new IllegalArgumentException("Felaktig typ: " +
 					 p_iType);
