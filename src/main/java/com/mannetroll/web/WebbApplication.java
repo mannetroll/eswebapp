@@ -111,7 +111,7 @@ public class WebbApplication {
 			String action = action(actionList, 1).get(0);
 			Map<String, Object> logmap = new HashMap<>();
 			long sleep = PingController.nextGaussian();
-			logmap.put(LogKeys.DESCRIPTION, "Will sleep: " + sleep);
+			logmap.put(LogKeys.MESSAGE, "Will sleep: " + sleep);
 			logmap.put("action", action);
 			logmap.put("sleep", sleep);
 			LOG.info(logmap);

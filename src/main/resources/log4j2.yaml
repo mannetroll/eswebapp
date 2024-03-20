@@ -16,7 +16,7 @@ Configuration:
           application: ${applicationName}
           namespace: alces
           locationInfo: true
-          osInfo: true
+          sort: true
         Policies:
           CronTriggeringPolicy:
             evaluateOnStartup: true
