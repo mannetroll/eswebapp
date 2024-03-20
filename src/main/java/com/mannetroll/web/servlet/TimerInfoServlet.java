@@ -19,10 +19,10 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.metrics.statistics.TimerInfoItem;
 import com.mannetroll.metrics.statistics.TimerInfoMemory;
 import com.mannetroll.metrics.statistics.TimerInfoStats;
-import com.mannetroll.metrics.util.LogKeys;
 
 /**
  * @author mannetroll

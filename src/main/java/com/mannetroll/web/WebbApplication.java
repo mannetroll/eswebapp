@@ -25,8 +25,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.metrics.helper.AccessMetricServletFilter;
-import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.config.Settings;
 import com.mannetroll.web.controller.PingController;
 import com.mannetroll.web.filter.HttpEtagFilter;

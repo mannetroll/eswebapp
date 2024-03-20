@@ -37,7 +37,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.mannetroll.metrics.util.LogKeys;
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.servicepoints.ServicePoint;
 import com.mannetroll.web.model.ArrivalCompletedResponse;
 import com.mannetroll.web.model.ArrivalCompletedStatusResponse;

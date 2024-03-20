@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.benmanes.caffeine.cache.stats.CacheStats;
-import com.mannetroll.metrics.util.LogKeys;
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.web.config.Settings;
 import com.mannetroll.web.model.ApiError;
 import com.mannetroll.web.model.ArrivalCompletedResponse;

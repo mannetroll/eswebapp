@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mannetroll.metrics.util.LogKeys;
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.web.model.ApiError;
 import com.mannetroll.web.model.Fault;
 import com.mannetroll.web.model.VolumeResponse;

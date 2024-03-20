@@ -17,9 +17,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
+import com.mannetroll.metrics.LogKeys;
 import com.mannetroll.metrics.statistics.AbstractTimerInfoStats;
 import com.mannetroll.metrics.statistics.TimerInfoStats;
-import com.mannetroll.metrics.util.LogKeys;
 
 /**
  * @author mannetroll
