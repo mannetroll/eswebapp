@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mannetroll.metrics.helper.Constants;
 import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.model.ApiError;
 import com.mannetroll.web.model.Fault;
@@ -75,9 +74,9 @@ public class KpiController {
 			@ApiResponse(code = 400, message = "Bad request") })
 	@RequestMapping(value = "/kpi/itemid/{itemid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<KpiResponse> kpi(@PathVariable String itemid) {
-		ThreadContext.put(Constants.METRICS_NAME, KPIS_KPI_ID);
-		ThreadContext.put(Constants.JAVA_METHOD, KPI);
-		ThreadContext.put(Constants.JAVA_ITEMID, itemid);
+		ThreadContext.put(LogKeys.METRICS_NAME, KPIS_KPI_ID);
+		ThreadContext.put(LogKeys.JAVA_METHOD, KPI);
+		ThreadContext.put(LogKeys.JAVA_ITEMID, itemid);
 		// remove DPD checksum if exists
 		itemid = deleteChecksum(itemid);
 		try {

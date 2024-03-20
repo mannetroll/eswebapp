@@ -17,9 +17,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 
-import com.mannetroll.metrics.helper.Constants;
 import com.mannetroll.metrics.statistics.AbstractTimerInfoStats;
 import com.mannetroll.metrics.statistics.TimerInfoStats;
+import com.mannetroll.metrics.util.LogKeys;
 
 /**
  * @author mannetroll
@@ -72,7 +72,7 @@ public class TimerInfoFilter implements Filter {
 
 	private String getUriKey(String uriKey) {
 		int len = 60;
-		String metrics = ThreadContext.get(Constants.METRICS_NAME);
+		String metrics = ThreadContext.get(LogKeys.METRICS_NAME);
 		if (metrics != null) {
 			return metrics;
 		} else if (uriKey != null && uriKey.length() > len) {

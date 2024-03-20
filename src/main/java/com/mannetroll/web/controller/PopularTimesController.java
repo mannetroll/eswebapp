@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.benmanes.caffeine.cache.stats.CacheStats;
-import com.mannetroll.metrics.helper.Constants;
+import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.config.Settings;
 import com.mannetroll.web.model.ApiError;
 import com.mannetroll.web.model.ArrivalCompletedResponse;
@@ -82,8 +82,8 @@ public class PopularTimesController {
     @RequestMapping(value = "/populartimes/spid/{spid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PopularTimesResponse> populartimes(@ApiParam(value = "ServicePointID")
     @PathVariable("spid") String spid) throws IOException {
-        ThreadContext.put(Constants.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(Constants.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
+        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
         try {
             PopularTimesResponse data = elasticService.popularTimes(spid, SE);
             data.setDate(toDate());
@@ -104,8 +104,8 @@ public class PopularTimesController {
     @PathVariable("spid") String spid,
             @ApiParam(value = "CountryCode")
             @PathVariable("cc") String cc) throws IOException {
-        ThreadContext.put(Constants.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(Constants.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
+        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
         try {
             PopularTimesResponse data = elasticService.popularTimes(spid, cc);
             data.setDate(toDate());
@@ -133,8 +133,8 @@ public class PopularTimesController {
             @PathVariable("from") Integer from,
             @ApiParam(value = "To")
             @PathVariable("to") Integer to) throws IOException {
-        ThreadContext.put(Constants.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(Constants.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
+        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
         try {
             DateTime fromDay = DAY.parseDateTime(String.valueOf(from));
             DateTime toDay = DAY.parseDateTime(String.valueOf(to)).plusHours(24);
@@ -173,8 +173,8 @@ public class PopularTimesController {
     @ApiOperation(value = "populartimescache", notes = "notes", response = ArrivalCompletedResponse.class)
     @RequestMapping(value = "/populartimescache", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> arrivalcompletedcache() throws IOException {
-        ThreadContext.put(Constants.METRICS_NAME, POPULARTIMES_CACHE_URI);
-        ThreadContext.put(Constants.JAVA_METHOD, POPULARTIMES_CACHE);
+        ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_CACHE_URI);
+        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES_CACHE);
         Map<String, Object> lmap = new TreeMap<String, Object>();
         DateTime now = new DateTime();
         lmap.put("Date", now);

@@ -19,15 +19,15 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.mannetroll.metrics.helper.Constants;
 import com.mannetroll.metrics.statistics.TimerInfoItem;
 import com.mannetroll.metrics.statistics.TimerInfoMemory;
 import com.mannetroll.metrics.statistics.TimerInfoStats;
+import com.mannetroll.metrics.util.LogKeys;
 
 /**
  * @author mannetroll
  *
- * http://localhost:8080/info
+ *         http://localhost:8080/info
  */
 @Configuration
 public class TimerInfoServlet extends HttpServlet {
@@ -46,7 +46,7 @@ public class TimerInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ThreadContext.put(Constants.METRICS_NAME, INFO);
+		ThreadContext.put(LogKeys.METRICS_NAME, INFO);
 		response.setContentType("text/html;charset=UTF-8");
 		response.setHeader("Edge-control", "no-store");
 		if ("clear".equalsIgnoreCase(request.getParameter("clear"))) {

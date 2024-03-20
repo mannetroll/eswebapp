@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mannetroll.metrics.helper.Constants;
+import com.mannetroll.metrics.util.LogKeys;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +34,7 @@ public class PingController {
 	@RequestMapping(value = "/process/{action}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 
 	public ResponseEntity<String> process() throws InterruptedException {
-		ThreadContext.put(Constants.METRICS_NAME, PROCESS);
+		ThreadContext.put(LogKeys.METRICS_NAME, PROCESS);
 		String response = (new Date()).toString();
 		long sleep = PingController.nextGaussian();
 		Thread.sleep(sleep);
@@ -47,7 +47,7 @@ public class PingController {
 	@RequestMapping(value = "/{action}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
 
 	public ResponseEntity<String> action() throws InterruptedException {
-		ThreadContext.put(Constants.METRICS_NAME, "{action}");
+		ThreadContext.put(LogKeys.METRICS_NAME, "{action}");
 		String response = (new Date()).toString();
 		long sleep = PingController.nextGaussian();
 		Thread.sleep(sleep);

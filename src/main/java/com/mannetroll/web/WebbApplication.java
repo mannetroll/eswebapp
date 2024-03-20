@@ -26,7 +26,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
 
 import com.mannetroll.metrics.helper.AccessMetricServletFilter;
-import com.mannetroll.metrics.helper.Constants;
 import com.mannetroll.metrics.util.LogKeys;
 import com.mannetroll.web.config.Settings;
 import com.mannetroll.web.controller.PingController;
@@ -49,7 +48,7 @@ public class WebbApplication {
 	private Settings settings;
 
 	static {
-		ThreadContext.put(Constants.NANOTIME, String.valueOf(System.nanoTime()));
+		ThreadContext.put(LogKeys.NANOTIME, String.valueOf(System.nanoTime()));
 	}
 
 	@Bean
