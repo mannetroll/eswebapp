@@ -76,7 +76,6 @@ public class KpiController {
 	public ResponseEntity<KpiResponse> kpi(@PathVariable String itemid) {
 		ThreadContext.put(LogKeys.METRICS_NAME, KPIS_KPI_ID);
 		ThreadContext.put(LogKeys.JAVA_METHOD, KPI);
-		ThreadContext.put(LogKeys.JAVA_ITEMID, itemid);
 		// remove DPD checksum if exists
 		itemid = deleteChecksum(itemid);
 		try {
