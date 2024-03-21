@@ -52,9 +52,6 @@
           }
         }
       },
-      "elapsed" : {
-        "type" : "long"
-      },
       "host" : {
         "properties" : {
           "name" : {
@@ -174,6 +171,15 @@
                 }
               }
             }
+          },
+          "type" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
           }
         }
       },
@@ -192,6 +198,9 @@
             "type" : "long"
           },
           "count" : {
+            "type" : "long"
+          },
+          "elapsed" : {
             "type" : "long"
           },
           "fifteenminuterate" : {
@@ -247,15 +256,6 @@
         "type" : "long"
       },
       "tags" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword",
-            "ignore_above" : 256
-          }
-        }
-      },
-      "type" : {
         "type" : "text",
         "fields" : {
           "keyword" : {
