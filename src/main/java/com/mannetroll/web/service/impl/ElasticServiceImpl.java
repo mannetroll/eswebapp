@@ -24,6 +24,7 @@ import org.elasticsearch.index.query.TermsQueryBuilder;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.BucketOrder;
 import org.elasticsearch.search.aggregations.bucket.histogram.DateHistogramAggregationBuilder;
+import org.elasticsearch.search.aggregations.bucket.histogram.DateHistogramInterval;
 import org.elasticsearch.search.aggregations.bucket.histogram.HistogramAggregationBuilder;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.aggregations.metrics.percentiles.PercentilesAggregationBuilder;
@@ -311,7 +312,7 @@ public class ElasticServiceImpl implements ElasticService {
 		TermsAggregationBuilder s_aggs = AggregationBuilders.terms(S_AGGS).field("consignee_address_postCode")
 				.size(700000);
 		DateHistogramAggregationBuilder d_aggs = AggregationBuilders.dateHistogram(WEEKDAY).field(TIMESTAMP)
-				.interval(24 * 3600 * 1000).timeZone(DateTimeZone.forID("GMT")).subAggregation(s_aggs);
+				.dateHistogramInterval(DateHistogramInterval.DAY).timeZone(DateTimeZone.forID("GMT")).subAggregation(s_aggs);
 		query.must(rangeQuery);
 		//
 		SearchSourceBuilder builder = new SearchSourceBuilder().aggregation(d_aggs).query(query).size(0);
