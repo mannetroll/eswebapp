@@ -83,7 +83,7 @@ public class PopularTimesController {
     public ResponseEntity<PopularTimesResponse> populartimes(@ApiParam(value = "ServicePointID")
     @PathVariable("spid") String spid) throws IOException {
         ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, POPULARTIMES);
         try {
             PopularTimesResponse data = elasticService.popularTimes(spid, SE);
             data.setDate(toDate());
@@ -105,7 +105,7 @@ public class PopularTimesController {
             @ApiParam(value = "CountryCode")
             @PathVariable("cc") String cc) throws IOException {
         ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, POPULARTIMES);
         try {
             PopularTimesResponse data = elasticService.popularTimes(spid, cc);
             data.setDate(toDate());
@@ -134,7 +134,7 @@ public class PopularTimesController {
             @ApiParam(value = "To")
             @PathVariable("to") Integer to) throws IOException {
         ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_URI);
-        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES);
+        ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, POPULARTIMES);
         try {
             DateTime fromDay = DAY.parseDateTime(String.valueOf(from));
             DateTime toDay = DAY.parseDateTime(String.valueOf(to)).plusHours(24);
@@ -174,7 +174,7 @@ public class PopularTimesController {
     @RequestMapping(value = "/populartimescache", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> arrivalcompletedcache() throws IOException {
         ThreadContext.put(LogKeys.METRICS_NAME, POPULARTIMES_CACHE_URI);
-        ThreadContext.put(LogKeys.JAVA_METHOD, POPULARTIMES_CACHE);
+        ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, POPULARTIMES_CACHE);
         Map<String, Object> lmap = new TreeMap<String, Object>();
         DateTime now = new DateTime();
         lmap.put("Date", now);

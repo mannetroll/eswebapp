@@ -75,7 +75,7 @@ public class KpiController {
 	@RequestMapping(value = "/kpi/itemid/{itemid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<KpiResponse> kpi(@PathVariable String itemid) {
 		ThreadContext.put(LogKeys.METRICS_NAME, KPIS_KPI_ID);
-		ThreadContext.put(LogKeys.JAVA_METHOD, KPI);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, KPI);
 		// remove DPD checksum if exists
 		itemid = deleteChecksum(itemid);
 		try {

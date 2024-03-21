@@ -48,7 +48,7 @@ public class WebbApplication {
 	private Settings settings;
 
 	static {
-		ThreadContext.put(LogKeys.NANOTIME, String.valueOf(System.nanoTime()));
+		ThreadContext.put(LogKeys.METRICS_NANOTIME, String.valueOf(System.nanoTime()));
 	}
 
 	@Bean

@@ -66,7 +66,7 @@ public class VolumeController {
 			@PathVariable("service") String service, @PathVariable("consignor") String consignor,
 			HttpServletResponse response) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, MARKET_VOLUME);
-		ThreadContext.put(LogKeys.JAVA_METHOD, VOLUME);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, VOLUME);
 		ServletOutputStream outputStream = response.getOutputStream();
 		if (to < from) {
 			outputStream.println(JsonUtil.toJson(createError("to < from", "001")));
@@ -116,7 +116,7 @@ public class VolumeController {
 	public String count(@PathVariable("from") Integer from, @PathVariable("to") Integer to,
 			HttpServletResponse response) {
 		ThreadContext.put(LogKeys.METRICS_NAME, MARKET_VOLUME);
-		ThreadContext.put(LogKeys.JAVA_METHOD, VOLUME);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, VOLUME);
 		if (to < from) {
 			return "to < from";
 		}

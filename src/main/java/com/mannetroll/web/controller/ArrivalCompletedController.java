@@ -128,7 +128,7 @@ public class ArrivalCompletedController {
 			@ApiParam(value = "Percentile") @RequestParam(value = "percentile", required = false) Integer percentile)
 			throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_DAY_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
 		try {
 			if (percentile == null || percentile < 0 || percentile > 100) {
 				percentile = defaultPercentile;
@@ -180,7 +180,7 @@ public class ArrivalCompletedController {
 			@ApiParam(value = "Percentile") @RequestParam(value = "percentile", required = false) Integer percentile)
 			throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
 		try {
 			if (percentile == null || percentile < 0 || percentile > 100) {
 				percentile = defaultPercentile;
@@ -206,7 +206,7 @@ public class ArrivalCompletedController {
 			@ApiParam(value = "date") @PathVariable("date") Integer date,
 			@ApiParam(value = "weeks") @PathVariable("weeks") Integer weeks) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ElasticService.ARRIVALCOMPLETED);
 		try {
 			if (weeks < 1 || weeks > 52) {
 				weeks = 8;
@@ -241,7 +241,7 @@ public class ArrivalCompletedController {
 			@ApiParam(value = "ServicePointID") @PathVariable("spid") String spid,
 			@ApiParam(value = "DayOfWeek") @PathVariable("dayofweek") Integer dayofweek) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ElasticService.ARRIVALCOMPLETED + "2");
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ElasticService.ARRIVALCOMPLETED + "2");
 		try {
 			ArrivalCompletedResponse data = elasticService.arrivalCompletedHour(spid, dayofweek);
 			return new ResponseEntity<>(data, HttpStatus.OK);
@@ -261,7 +261,7 @@ public class ArrivalCompletedController {
 	public ResponseEntity<ArrivalCompletedResponse> arrivalCompleted2(
 			@ApiParam(value = "ServicePointID") @PathVariable("spid") String spid) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ElasticService.ARRIVALCOMPLETED + "2");
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ElasticService.ARRIVALCOMPLETED + "2");
 		try {
 			ArrivalCompletedResponse data = elasticService.arrivalCompletedHour(spid);
 			return new ResponseEntity<>(data, HttpStatus.OK);
@@ -280,7 +280,7 @@ public class ArrivalCompletedController {
 	@RequestMapping(value = "/arrivalcompletedstatus", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<ArrivalCompletedStatusResponse> arrivalCompletedStatus() throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_STATUS_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ARRIVALCOMPLETED_STATUS);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ARRIVALCOMPLETED_STATUS);
 		try {
 			ArrivalCompletedStatusResponse data = elasticService.arrivalCompletedStatus();
 			return new ResponseEntity<>(data, HttpStatus.OK);
@@ -307,7 +307,7 @@ public class ArrivalCompletedController {
 	public void arrivalCompletedExport(@RequestParam(value = "size", required = false) Integer size,
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_EXPORT_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ARRIVALCOMPLETED_EXPORT);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ARRIVALCOMPLETED_EXPORT);
 		if (size == null) {
 			size = 100;
 		}
@@ -354,7 +354,7 @@ public class ArrivalCompletedController {
 	public void arrivalCompletedIds(@ApiParam(value = "ServicePointID") @PathVariable("spid") String[] spid,
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_LIST_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ARRIVALCOMPLETED_LIST);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ARRIVALCOMPLETED_LIST);
 		final Instant start = Instant.now();
 		ServletOutputStream out = response.getOutputStream();
 		Long loop = 1L;
@@ -425,7 +425,7 @@ public class ArrivalCompletedController {
 	@RequestMapping(value = "/arrivalcompletedcache", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Map<String, Object>> arrivalcompletedcache() throws IOException {
 		ThreadContext.put(LogKeys.METRICS_NAME, ARRIVALCOMPLETED_CACHE_URI);
-		ThreadContext.put(LogKeys.JAVA_METHOD, ARRIVALCOMPLETED_CACHE);
+		ThreadContext.put(LogKeys.METRICS_JAVA_METHOD, ARRIVALCOMPLETED_CACHE);
 		Map<String, Object> lmap = new TreeMap<String, Object>();
 		DateTime now = new DateTime();
 		lmap.put("Date", now);
