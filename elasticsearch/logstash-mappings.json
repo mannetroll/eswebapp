@@ -7,9 +7,6 @@
       "@version" : {
         "type" : "keyword"
       },
-      "action" : {
-        "type" : "keyword"
-      },
       "agent" : {
         "properties" : {
           "ephemeral_id" : {
@@ -191,9 +188,6 @@
             "type" : "long"
           }
         }
-      },
-      "sleep" : {
-        "type" : "long"
       },
       "tags" : {
         "type" : "keyword"
