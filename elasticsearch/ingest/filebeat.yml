@@ -1,0 +1,14 @@
+filebeat.inputs:
+- type: filestream
+  paths: /usr/local/app/log/eswebapp/*.log
+  
+processors:
+  - decode_json_fields:
+      fields: ["message"]
+      target: ""
+      overwrite_keys: true
+  - drop_fields:
+      fields: ["message"]
+
+output.logstash:
+  hosts: ["localhost:5044"]
