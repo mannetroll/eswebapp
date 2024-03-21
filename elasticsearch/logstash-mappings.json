@@ -42,26 +42,14 @@
       "ecs" : {
         "properties" : {
           "version" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           }
         }
       },
       "host" : {
         "properties" : {
           "name" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           }
         }
       },
@@ -70,13 +58,7 @@
           "request" : {
             "properties" : {
               "method" : {
-                "type" : "text",
-                "fields" : {
-                  "keyword" : {
-                    "type" : "keyword",
-                    "ignore_above" : 256
-                  }
-                }
+                "type" : "keyword"
               }
             }
           },
@@ -95,13 +77,7 @@
       "input" : {
         "properties" : {
           "type" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           }
         }
       },
@@ -110,22 +86,10 @@
           "file" : {
             "properties" : {
               "device_id" : {
-                "type" : "text",
-                "fields" : {
-                  "keyword" : {
-                    "type" : "keyword",
-                    "ignore_above" : 256
-                  }
-                }
+                "type" : "keyword"
               },
               "inode" : {
-                "type" : "text",
-                "fields" : {
-                  "keyword" : {
-                    "type" : "keyword",
-                    "ignore_above" : 256
-                  }
-                }
+                "type" : "keyword"
               },
               "path" : {
                 "type" : "text",
@@ -139,22 +103,10 @@
             }
           },
           "level" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           },
           "logger" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           },
           "offset" : {
             "type" : "long"
@@ -173,35 +125,29 @@
             }
           },
           "type" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword",
-                "ignore_above" : 256
-              }
-            }
+            "type" : "keyword"
           }
         }
       },
       "metrics" : {
         "properties" : {
           "75thpercentile" : {
-            "type" : "long"
+            "type" : "float"
           },
           "95thpercentile" : {
-            "type" : "long"
+            "type" : "float"
           },
           "999thpercentile" : {
-            "type" : "long"
+            "type" : "float"
           },
           "99thpercentile" : {
-            "type" : "long"
+            "type" : "float"
           },
           "count" : {
             "type" : "long"
           },
           "elapsed" : {
-            "type" : "long"
+            "type" : "float"
           },
           "fifteenminuterate" : {
             "type" : "float"
@@ -210,25 +156,25 @@
             "type" : "float"
           },
           "max" : {
-            "type" : "long"
+            "type" : "float"
           },
           "mean" : {
-            "type" : "long"
+            "type" : "float"
           },
           "meanrate" : {
             "type" : "float"
           },
           "median" : {
-            "type" : "long"
+            "type" : "float"
           },
           "min" : {
-            "type" : "long"
+            "type" : "float"
           },
           "oneminuterate" : {
             "type" : "float"
           },
           "std" : {
-            "type" : "long"
+            "type" : "float"
           }
         }
       },
@@ -237,13 +183,7 @@
           "thread" : {
             "properties" : {
               "name" : {
-                "type" : "text",
-                "fields" : {
-                  "keyword" : {
-                    "type" : "keyword",
-                    "ignore_above" : 256
-                  }
-                }
+                "type" : "keyword"
               }
             }
           },
@@ -256,13 +196,7 @@
         "type" : "long"
       },
       "tags" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword",
-            "ignore_above" : 256
-          }
-        }
+        "type" : "keyword"
       },
       "url" : {
         "properties" : {
@@ -271,7 +205,7 @@
             "fields" : {
               "keyword" : {
                 "type" : "keyword",
-                "ignore_above" : 256
+                "ignore_above" : 1024
               }
             }
           },
@@ -280,7 +214,7 @@
             "fields" : {
               "keyword" : {
                 "type" : "keyword",
-                "ignore_above" : 256
+                "ignore_above" : 1024
               }
             }
           }
@@ -300,13 +234,7 @@
         }
       },
       "xrequestid" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword",
-            "ignore_above" : 256
-          }
-        }
+        "type" : "keyword"
       }
     }
   }
