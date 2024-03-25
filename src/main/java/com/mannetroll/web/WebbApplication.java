@@ -33,6 +33,7 @@ import com.mannetroll.web.filter.HttpEtagFilter;
 import com.mannetroll.web.filter.LastModifiedHeaderFilter;
 import com.mannetroll.web.filter.TimerInfoFilter;
 
+import co.elastic.apm.attach.ElasticApmAttacher;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.config.HttpClientConfig;
@@ -132,6 +133,7 @@ public class WebbApplication {
 	}
 
 	public static void main(String[] args) {
+		ElasticApmAttacher.attach();
 		SpringApplication.run(WebbApplication.class, args);
 		LOG.info("Done!");
 	}
