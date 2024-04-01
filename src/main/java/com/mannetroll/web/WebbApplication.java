@@ -133,8 +133,8 @@ public class WebbApplication {
 	}
 
 	public static void main(String[] args) {
-		ElasticApmAttacher.attach();
 		SpringApplication.run(WebbApplication.class, args);
+		ElasticApmAttacher.attach();
 		LOG.info("Done!");
 	}
 }
