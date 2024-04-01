@@ -20,4 +20,7 @@ eswebbapp
     -Delastic.apm.environment=alces-test \
     -Delastic.apm.application_packages=org.example \
     -jar eswebapp-1.0.0-SNAPSHOT.jar
-	
+
+# agent
+
+    java -javaagent:./elastic-apm-agent-1.0.jar -jar ./target/eswebapp-1.0.0-SNAPSHOT.jar
