@@ -1,7 +1,5 @@
 package com.mannetroll.web.model;
 
-import io.swagger.annotations.ApiModel;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -12,6 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import io.swagger.annotations.ApiModel;
 
 @XmlRootElement(name = "KpiResponse")
 @XmlAccessorType(XmlAccessType.FIELD)
