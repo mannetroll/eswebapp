@@ -23,4 +23,4 @@ eswebbapp
 
 # agent
 
-    java -javaagent:./elastic-apm-agent-1.0.jar -jar ./target/eswebapp-1.0.0-SNAPSHOT.jar
+    java -javaagent:./elastic-apm-agent-1.48.1.jar -jar ./target/eswebapp-1.0.0-SNAPSHOT.jar
