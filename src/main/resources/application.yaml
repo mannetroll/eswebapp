@@ -23,6 +23,17 @@ management:
       percentiles:
         http.server.requests: 0.50,0.75,0.95,0.99
 
+otel:
+  propagators:
+    - tracecontext
+    - b3
+  resource:
+    attributes:
+      deployment.environment: dev
+      service:
+        name: eswebapp
+        namespace: siem
+
 kpis:
   eshost: https://proxy.elastic.se
   cluster: 00000000000000000000000000000000
