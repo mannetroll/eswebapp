@@ -75,8 +75,7 @@
 [INFO] |  |  \- org.aspectj:aspectjweaver:jar:1.9.7:compile
 [INFO] |  +- io.opentelemetry.instrumentation:opentelemetry-spring-boot:jar:2.3.0-alpha:compile
 [INFO] |  |  +- io.opentelemetry.instrumentation:opentelemetry-instrumentation-api:jar:2.3.0:compile
-[INFO] |  |  |  +- io.opentelemetry:opentelemetry-api-incubator:jar:1.37.0-alpha:runtime
-[INFO] |  |  |  \- io.opentelemetry.semconv:opentelemetry-semconv-incubating:jar:1.25.0-alpha:compile
+[INFO] |  |  |  \- io.opentelemetry:opentelemetry-api-incubator:jar:1.37.0-alpha:runtime
 [INFO] |  |  +- io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:jar:2.3.0-alpha:compile
 [INFO] |  |  +- io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations-support:jar:2.3.0-alpha:runtime
 [INFO] |  |  +- io.opentelemetry.instrumentation:opentelemetry-kafka-clients-2.6:jar:2.3.0-alpha:runtime
@@ -108,7 +107,6 @@
 [INFO] |  +- io.opentelemetry:opentelemetry-sdk:jar:1.37.0:compile
 [INFO] |  |  \- io.opentelemetry:opentelemetry-sdk-common:jar:1.37.0:compile
 [INFO] |  +- io.opentelemetry.instrumentation:opentelemetry-resources:jar:2.3.0-alpha:runtime
-[INFO] |  |  \- io.opentelemetry.semconv:opentelemetry-semconv:jar:1.25.0-alpha:compile
 [INFO] |  +- io.opentelemetry:opentelemetry-sdk-extension-incubator:jar:1.37.0-alpha:runtime
 [INFO] |  |  \- org.snakeyaml:snakeyaml-engine:jar:2.7:runtime
 [INFO] |  +- io.opentelemetry.contrib:opentelemetry-aws-resources:jar:1.34.0-alpha:runtime
@@ -119,6 +117,9 @@
 [INFO] |  |        \- org.jetbrains:annotations:jar:13.0:runtime
 [INFO] |  \- io.opentelemetry.contrib:opentelemetry-gcp-resources:jar:1.34.0-alpha:runtime
 [INFO] |     \- com.google.cloud.opentelemetry:detector-resources-support:jar:0.27.0:runtime
+[INFO] +- io.opentelemetry.contrib:opentelemetry-samplers:jar:1.35.0-alpha:compile
+[INFO] |  +- io.opentelemetry.semconv:opentelemetry-semconv:jar:1.25.0-alpha:compile
+[INFO] |  \- io.opentelemetry.semconv:opentelemetry-semconv-incubating:jar:1.25.0-alpha:compile
 [INFO] +- co.elastic.apm:apm-agent-attach:jar:1.48.1:compile
 [INFO] |  +- net.java.dev.jna:jna:jar:5.3.1:compile
 [INFO] |  \- net.java.dev.jna:jna-platform:jar:5.3.1:compile
@@ -192,6 +193,6 @@
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.843 s
-[INFO] Finished at: 2024-05-17T13:40:20+02:00
+[INFO] Total time:  0.835 s
+[INFO] Finished at: 2024-05-17T13:57:28+02:00
 [INFO] ------------------------------------------------------------------------
