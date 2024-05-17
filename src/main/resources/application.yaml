@@ -26,7 +26,6 @@ management:
 otel:
   propagators:
     - tracecontext
-    - b3
   resource:
     attributes:
       deployment.environment: dev

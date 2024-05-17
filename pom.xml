@@ -86,6 +86,11 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>io.opentelemetry.contrib</groupId>
+			<artifactId>opentelemetry-samplers</artifactId>
+			<version>1.35.0-alpha</version>
+		</dependency>
+		<dependency>
 			<groupId>co.elastic.apm</groupId>
 			<artifactId>apm-agent-attach</artifactId>
 			<version>1.48.1</version>
